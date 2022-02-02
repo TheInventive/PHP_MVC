@@ -9,7 +9,7 @@ const URL_ROOT = '/';
 const URL_SUBFOLDER = '';
 
 //DB Params
-const DB_HOST = 'localhost';
+const DB_HOST = '127.0.0.1';
 const DB_USER = 'root';
 const DB_PASS = 'erikeCi441';
 const DB_NAME = 'test';

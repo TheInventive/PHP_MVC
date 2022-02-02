@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Controllers\Service;
-
+require_once '../config/Connection.php';
 use App\config\Connection;
 use App\Models\AdvertisementModel;
+use App\Models\UserModel;
 
 class AdvertisementService
 {
@@ -26,10 +27,30 @@ class AdvertisementService
             $row = $result->fetch_assoc();
                 $ret->setUserId($row["user_id"]);
                 $ret->setTitle($row["title"]);
-                $ret->setAdvertisementId($row);
+                $ret->setAdvertisementId($row["advertisement_id"]);
         }
         $conn->close();
         return $ret;
+    }
+
+    public function readAll() : array
+    {
+        $conn = Connection::createConnection();
+        $query = "select a.title, b.name from advertisements a, users b where a.user_id = b.user_id";
+        $result = $conn->query($query);
+        $res = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $ret = new AdvertisementModel();
+                $ret->setTitle($row["title"]);
+                $user = new UserModel();
+                $user->setUserName($row["name"]);
+                $ret->setUser($user);
+                array_push($res,$ret);
+            }
+        }
+        $conn->close();
+        return $res;
     }
 
     public function update(int $id, string $data)

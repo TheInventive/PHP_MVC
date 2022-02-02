@@ -3,11 +3,13 @@
 namespace App\Controllers;
 
 use App\Controllers\Service\AdvertisementService;
+use Symfony\Component\Routing\RouteCollection;
 
 class AdvertisementController
 {
-    public function showStuff(int $id){
+    public function showAdvertisements(RouteCollection $routes){
         $advertisement = new AdvertisementService();
-        $advertisement->read($id);
+        $ads = $advertisement->readAll();
+        require_once APP_ROOT . '/views/advertisements.php';
     }
 }

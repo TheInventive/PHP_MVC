@@ -36,14 +36,12 @@ class Router
             $params = array_merge((array)array_slice($matcher, 2, -1), array('routes' => $routes));
 
             call_user_func_array(array($classInstance, $matcher['_route']), $params);
-
-        } catch (MethodNotAllowedException $e) {
+        } catch (MethodNotAllowedException) {
             echo 'Route method is not allowed.';
-        } catch (ResourceNotFoundException $e) {
+        } catch (ResourceNotFoundException) {
             echo 'Route does not exists.';
         }
     }
 }
-
 $router = new Router();
 $router($routes);

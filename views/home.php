@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Simple PHP MVC</title>
+    <title>Home page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -16,7 +16,10 @@
 <section>
     <h1>Homepage</h1>
     <p>
-        <a href="<?php echo $routeToProduct ?>">Check the first product</a>
+        <a href="<?php echo $routes->get('showUsers')->getPath(); ?>">Go to users page</a>
+    </p>
+    <p>
+        <a href="<?php echo $routes->get('showAdvertisements')->getPath(); ?>">Go to advertisements page</a>
     </p>
     <section>
 

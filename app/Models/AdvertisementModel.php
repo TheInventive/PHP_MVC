@@ -7,6 +7,17 @@ class AdvertisementModel
     private int $advertisement_id;
     private int $user_id;
     private string $title;
+    private UserModel $user;
+
+    public function getUser(): UserModel
+    {
+        return $this->user;
+    }
+
+    public function setUser(UserModel $user): void
+    {
+        $this->user = $user;
+    }
 
     public function getAdvertisementId(): int
     {
